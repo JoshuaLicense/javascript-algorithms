@@ -113,4 +113,30 @@ class LinkedList {
 
     return this;
   }
+
+  reverse() {
+    // Lets reverse the linked list.
+    let currentNode = this.head;
+
+    let prevNode = null;
+    let nextNode = null;
+
+    while (currentNode) {
+      // This allows it to loop.
+      nextNode = currentNode.next;
+
+      // Now swap the pointer to the opposite direction.
+      currentNode.next = prevNode;
+
+      // Remember the last pointer.
+      prevNode = currentNode;
+      // Keep the loop going.
+      currentNode = nextNode;
+    }
+
+    // The head is the last node turned around.
+    this.tail = this.head;
+
+    this.head = prevNode;
+  }
 }
